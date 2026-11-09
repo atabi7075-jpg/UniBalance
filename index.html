@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudentLife | Apprendre, Manger, Bouger</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f7ff;
+    color: #171536;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: white;
+    box-shadow: 0 2px 10px #e5e0f5;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #6025d5;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #171536;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #6025d5;
+}
+
+.hero {
+    padding: 65px 7%;
+    background: linear-gradient(120deg, #eee9ff, #fdf4ff);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #6025d5;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.search-box {
+    display: flex;
+    background: white;
+    padding: 8px;
+    border-radius: 15px;
+    gap: 8px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    padding: 12px;
+}
+
+button {
+    background: #6025d5;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #4517a8;
+}
+
+.hero-image {
+    font-size: 150px;
+}
+
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    padding: 25px 5%;
+}
+
+.quick-card {
+    background: white;
+    border: 1px solid #e5dafa;
+    padding: 20px 10px;
+    text-align: center;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #171536;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.quick-card:hover {
+    transform: translateY(-5px);
+    background: #eee8ff;
+}
+
+.quick-card .emoji {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.container {
+    padding: 25px 5%;
+}
+
+.section-title {
+    font-size: 27px;
+    margin-bottom: 20px;
+    color: #171536;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #e7e2f5;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 75px;
+    background: linear-gradient(135deg, #eee8ff, #fcecff);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-bottom: 12px;
+}
+
+.card-content p {
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.tags {
+    color: #6025d5;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.card-content button {
+    width: 100%;
+}
+
+.ad-space {
+    margin: 30px 5%;
+    padding: 30px;
+    text-align: center;
+    background: #f0edf8;
+    border: 2px dashed #b9a8e8;
+    border-radius: 15px;
+    color: #777;
+}
+
+/* Pomodoro */
+
+.pomodoro {
+    background: linear-gradient(135deg, #e8ddff, #f5eaff);
+    border: 1px solid #d5c1ff;
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.pomodoro h2 {
+    margin-bottom: 20px;
+}
+
+.timer {
+    font-size: 65px;
+    font-weight: bold;
+    color: #6025d5;
+    margin: 25px 0;
+}
+
+.timer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.timer-buttons button {
+    min-width: 100px;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.skill {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid #e5dafa;
+}
+
+.skill .emoji {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.skill h3 {
+    margin-bottom: 10px;
+}
+
+.skill p {
+    color: #777;
+    margin-bottom: 15px;
+}
+
+footer {
+    background: #20104e;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 10px;
+}
+
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-links {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skills {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero-image {
+        font-size: 90px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills {
+        grid-template-columns: 1fr;
+    }
+
+    .timer {
+        font-size: 50px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="logo">🎓 StudentLife</div>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#recettes">Recettes</a>
+        <a href="#sport">Sport</a>
+        <a href="#temps">Gestion du temps</a>
+        <a href="#competences">Compétences</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="accueil">
+
+    <div class="hero-content">
+
+        <h1>
+            Étudie mieux,<br>
+            <span>vis plus sainement !</span>
+        </h1>
+
+        <p>
+            Recettes faciles, conseils sport, astuces
+            d'organisation et cours pour développer
+            de nouvelles compétences.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Rechercher une recette, un exercice..."
+            >
+
+            <button onclick="searchContent()">
+                Rechercher
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+        📚🥗💪
+    </div>
+
+</section>
+
+<!-- QUICK LINKS -->
+
+<section class="quick-links">
+
+    <a href="#recettes" class="quick-card">
+        <span class="emoji">🍝</span>
+        Recettes économiques
+    </a>
+
+    <a href="#sport" class="quick-card">
+        <span class="emoji">🏋️</span>
+        Sport & Bien-être
+    </a>
+
+    <a href="#temps" class="quick-card">
+        <span class="emoji">⏰</span>
+        Gestion du temps
+    </a>
+
+    <a href="#competences" class="quick-card">
+        <span class="emoji">💻</span>
+        Nouvelles compétences
+    </a>
+
+    <a href="#motivation" class="quick-card">
+        <span class="emoji">🏆</span>
+        Réussite étudiante
+    </a>
+
+</section>
+
+<!-- RECETTES -->
+
+<section class="container" id="recettes">
+
+    <h2 class="section-title">
+        🍝 Recettes pour étudiants
+    </h2>
+
+    <div class="cards">
+
+        <div class="card searchable">
+
+            <div class="card-image">🍝</div>
+
+            <div class="card-content">
+
+                <h3>Pâtes à l'ail et au parmesan</h3>
+
+                <p>
+                    Une recette délicieuse, rapide
+                    et économique.
+                </p>
+
+                <div class="tags">
+                    ⏱ 15 min | Facile | Budget économique
+                </div>
+
+                <button onclick="showRecipe(
+                    'Pâtes à l’ail',
+                    'Faire cuire les pâtes. Ajouter de l’ail, un peu d’huile d’olive et du parmesan. Mélanger et servir chaud.'
+                )">
+                    Voir la recette
+                </button>
+
+            </div>
+        </div>
+
+        <div class="card searchable">
+
+            <div class="card-image">🥪</div>
+
+            <div class="card-content">
+
+                <h3>Sandwich étudiant</h3>
+
+                <p>
+                    Un repas simple pour les journées chargées.
+                </p>
+
+                <div class="tags">
+                    ⏱ 10 min | Facile | Petit budget
+                </div>
+
+                <button onclick="showRecipe(
+                    'Sandwich étudiant',
+                    'Prendre du pain, ajouter des œufs, de la tomate, de la salade et du fromage. Assembler et déguster.'
+                )">
+                    Voir la recette
+                </button>
+
+            </div>
+        </div>
+
+        <div class="card searchable">
+
+            <div class="card-image">🥗</div>
+
+            <div class="card-content">
+
+                <h3>Salade complète</h3>
+
+                <p>
+                    Une salade équilibrée pour garder de l'énergie.
+                </p>
+
+                <div class="tags">
+                    ⏱ 15 min | Facile | Healthy
+                </div>
+
+                <button onclick="showRecipe(
+                    'Salade complète',
+                    'Mélanger de la laitue, des tomates, du maïs, des œufs et du thon. Ajouter une vinaigrette.'
+                )">
+                    Voir la recette
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SPORT -->
+
+<section class="container" id="sport">
+
+    <h2 class="section-title">
+        🏋️ Sport & Bien-être
+    </h2>
+
+    <div class="cards">
+
+        <div class="card searchable">
+
+            <div class="card-image">🧘</div>
+
+            <div class="card-content">
+
+                <h3>Yoga pour débutants</h3>
+
+                <p>
+                    Quelques mouvements simples
+                    pour réduire le stress.
+                </p>
+
+                <div class="tags">
+                    ⏱ 10 min | Débutant
+                </div>
+
+                <button onclick="showRecipe(
+                    'Yoga débutant',
+                    'Commence par la posture de l’enfant, puis la posture du chat et la respiration profonde. Fais chaque mouvement doucement.'
+                )">
+                    Découvrir
+                </button>
+
+            </div>
+        </div>
+
+        <div class="card searchable">
+
+            <div class="card-image">💪</div>
+
+            <div class="card-content">
+
+                <h3>Exercices à la maison</h3>
+
+                <p>
+                    Rester en forme sans matériel.
+                </p>
+
+                <div class="tags">
+                    ⏱ 15 min | Débutant
+                </div>
+
+                <button onclick="showRecipe(
+                    'Sport à la maison',
+                    'Fais 10 squats, 10 pompes adaptées, 20 secondes de planche et 30 secondes de marche sur place. Adapte les exercices à ta condition physique.'
+                )">
+                    Découvrir
+                </button>
+
+            </div>
+        </div>
+
+        <div class="card searchable">
+
+            <div class="card-image">🚶</div>
+
+            <div class="card-content">
+
+                <h3>Marche quotidienne</h3>
+
+                <p>
+                    Bouger un peu chaque jour
+                    pour améliorer son bien-être.
+                </p>
+
+                <div class="tags">
+                    ⏱ 20 min | Accessible
+                </div>
+
+                <button onclick="showRecipe(
+                    'Marche quotidienne',
+                    'Choisis un endroit agréable et marche à ton rythme pendant 20 minutes.'
+                )">
+                    Découvrir
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GESTION DU TEMPS -->
+
+<section class="container" id="temps">
+
+    <h2 class="section-title">
+        ⏰ Gestion du temps
+    </h2>
+
+    <div class="pomodoro">
+
+        <h2>🍅 Pomodoro Timer</h2>
+
+        <p>
+            Concentre-toi pendant 25 minutes,
+            puis prends une pause.
+        </p>
+
+        <div class="timer" id="timer">
+            25:00
+        </div>
+
+        <div class="timer-buttons">
+
+            <button onclick="startTimer()">
+                ▶ Démarrer
+            </button>
+
+            <button onclick="pauseTimer()">
+                ⏸ Pause
+            </button>
+
+            <button onclick="resetTimer()">
+                ↺ Reset
+            </button>
+
+        </div>
+
+        <p id="timerMessage" style="margin-top:20px">
+            Prêt à commencer ?
+        </p>
+
+    </div>
+
+</section>
+
+<!-- NOUVELLES COMPETENCES -->
+
+<section class="container" id="competences">
+
+    <h2 class="section-title">
+        💻 Apprendre une nouvelle compétence
+    </h2>
+
+    <div class="skills">
+
+        <div class="skill searchable">
+
+            <div class="emoji">🌐</div>
+
+            <h3>HTML & CSS</h3>
+
+            <p>
+                Apprendre à créer des sites web.
+            </p>
+
+            <button onclick="showRecipe(
+                'HTML & CSS',
+                'HTML sert à structurer une page web. CSS sert à la styliser. Commence par les titres, paragraphes, images, couleurs et Flexbox.'
+            )">
+                Commencer
+            </button>
+
+        </div>
+
+        <div class="skill searchable">
+
+            <div class="emoji">🐍</div>
+
+            <h3>Python</h3>
+
+            <p>
+                Découvrir la programmation.
+            </p>
+
+            <button onclick="showRecipe(
+                'Python',
+                'Commence par les variables, les conditions, les boucles et les fonctions. Crée ensuite un petit calculateur.'
+            )">
+                Commencer
+            </button>
+
+        </div>
+
+        <div class="skill searchable">
+
+            <div class="emoji">🎨</div>
+
+            <h3>Canva</h3>
+
+            <p>
+                Créer des designs et présentations.
+            </p>
+
+            <button onclick="showRecipe(
+                'Canva',
+                'Apprends à créer des affiches, des présentations, des CV et des publications pour les réseaux sociaux.'
+            )">
+                Commencer
+            </button>
+
+        </div>
+
+        <div class="skill searchable">
+
+            <div class="emoji">🖌️</div>
+
+            <h3>Figma</h3>
+
+            <p>
+                Découvrir le UI/UX Design.
+            </p>
+
+            <button onclick="showRecipe(
+                'Figma',
+                'Découvre les Frames, les composants, les Auto Layouts et les prototypes interactifs.'
+            )">
+                Commencer
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PUBLICITE -->
+
+<div class="ad-space">
+
+    <h3>📢 Espace publicitaire</h3>
+
+    <p>
+        Google AdSense - Publicité à intégrer ultérieurement
+    </p>
+
+</div>
+
+<!-- MOTIVATION -->
+
+<section class="container" id="motivation">
+
+    <div class="pomodoro">
+
+        <h2>🎯 Tu peux le faire !</h2>
+
+        <p>
+            Un petit effort aujourd'hui,
+            un grand succès demain.
+        </p>
+
+        <br>
+
+        <button onclick="showRecipe(
+            'Motivation',
+            'Fixe un petit objectif aujourd’hui. Avance étape par étape, célèbre tes progrès et reste régulière.'
+        )">
+            Découvrir un conseil
+        </button>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <h2>🎓 StudentLife</h2>
+
+    <p>
+        Apprendre · Manger · Bouger · Réussir
+    </p>
+
+    <p>
+        © 2026 StudentLife - Tous droits réservés
+    </p>
+
+</footer>
+
+<script>
+
+// RECHERCHE
+
+function searchContent() {
+
+    let input = document
+        .getElementById("search")
+        .value.toLowerCase();
+
+    let cards = document.querySelectorAll(".searchable");
+
+    cards.forEach(function(card) {
+
+        let text = card.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+// AFFICHER LES RECETTES ET CONSEILS
+
+function showRecipe(title, description) {
+
+    alert(title + "\n\n" + description);
+
+}
+
+// POMODORO TIMER
+
+let timeLeft = 25 * 60;
+let timerInterval = null;
+
+function updateTimer() {
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    document.getElementById("timer").innerText =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+}
+
+function startTimer() {
+
+    if (timerInterval !== null) {
+        return;
+    }
+
+    document.getElementById("timerMessage").innerText =
+        "Concentration en cours... 💪";
+
+    timerInterval = setInterval(function() {
+
+        if (timeLeft > 0) {
+
+            timeLeft--;
+            updateTimer();
+
+        } else {
+
+            clearInterval(timerInterval);
+            timerInterval = null;
+
+            document.getElementById("timerMessage").innerText =
+                "Bravo ! Temps terminé. Prends une pause. 🎉";
+
+            alert("Bravo ! Tu as terminé ta session Pomodoro.");
+
+        }
+
+    }, 1000);
+
+}
+
+function pauseTimer() {
+
+    clearInterval(timerInterval);
+    timerInterval = null;
+
+    document.getElementById("timerMessage").innerText =
+        "Timer en pause ⏸";
+
+}
+
+function resetTimer() {
+
+    clearInterval(timerInterval);
+    timerInterval = null;
+
+    timeLeft = 25 * 60;
+
+    updateTimer();
+
+    document.getElementById("timerMessage").innerText =
+        "Prêt à commencer ?";
+
+}
+
+</script>
+
+</body>
+</html>
